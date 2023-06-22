@@ -1,6 +1,7 @@
 /** @file
- * Copyright (c) 2022 Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2023, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
+ * Copyright 2023 NXP
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,4 +35,14 @@
 void platform_init(void);
 void psa_adac_platform_init(void);
 
+/**
+ *   @brief    - initialize anything relavent to a platform
+ *               like any key initialization for crypto operations and etc
+ *               this is optional Api to implement
+ *   @return   - TRUE/FALSE
+**/
+__attribute__((weak)) unsigned int pal_platform_init(void)
+{
+	return (unsigned int)PAL_STATUS_SUCCESS;
+}
 #endif //PSA_ADAC_PLATFORM_H
