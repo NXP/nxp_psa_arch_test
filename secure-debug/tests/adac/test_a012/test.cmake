@@ -1,5 +1,5 @@
 #/** @file
-# * Copyright (c) 2021-2023 Arm Limited or its affiliates. All rights reserved.
+# * Copyright (c) 2023, Arm Limited or its affiliates. All rights reserved.
 # * SPDX-License-Identifier : Apache-2.0
 # *
 # * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,22 +15,7 @@
 # * limitations under the License.
 #**/
 
-
-#List of tests to be compiled and run as part of initial_attestation suite
-
-(START)
-
-test_a001
-test_a002
-test_a003
-test_a004
-test_a005
-test_a006
-test_a007
-test_a008
-test_a009
-test_a010
-test_a011
-test_a012
-
-(END)
+list(APPEND CC_SOURCE
+	test_a012.c
+)
+list(APPEND CC_OPTIONS )

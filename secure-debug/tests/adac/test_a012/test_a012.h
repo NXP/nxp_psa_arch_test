@@ -1,5 +1,5 @@
 /** @file
- * Copyright (c) 2022-2023 Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2023, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,18 +15,11 @@
  * limitations under the License.
 **/
 
-#ifndef _VAL_ENTRY_H_
-#define _VAL_ENTRY_H_
+#ifndef _TEST_A012_TESTS_H_
+#define _TEST_A012_TESTS_H_
 
-#include "val.h"
+#define test_entry CONCAT(test_entry_, a012)
 
-#define PSA_ACS_MAJOR_VER    1
-#define PSA_ACS_MINOR_VER    0
+extern val_api_t *val;
 
-/**
-    @brief    - PSA Test Suite C main function, does VAL init and calls test dispatcher
-    @param    - None
-    @return   - int32_t
-**/
-extern int32_t val_entry(void);
-#endif
+#endif /* _TEST_A012_TESTS_H_ */
