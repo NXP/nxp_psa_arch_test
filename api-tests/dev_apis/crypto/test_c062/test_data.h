@@ -1,5 +1,5 @@
 /** @file
- * Copyright (c) 2020, Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2023, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,6 +32,7 @@ typedef struct {
 #if (defined(ARCH_TEST_MD2) || defined(ARCH_TEST_MD4) || defined(ARCH_TEST_MD5) || defined(ARCH_TEST_RIPEMD160) || defined(ARCH_TEST_SHA1) || \
 defined(ARCH_TEST_SHA224) || defined(ARCH_TEST_SHA256) || defined(ARCH_TEST_SHA384) || defined(ARCH_TEST_SHA512))
 static const test_data check1[] = {
+#ifdef ARCH_TEST_HASH_SUSPEND
 #ifdef ARCH_TEST_MD2
 {
     .test_desc         = "Test psa_hash_suspend - MD2\n",
@@ -182,6 +183,7 @@ static const test_data check1[] = {
     .operation_state   = 0,
     .expected_status   = PSA_ERROR_BAD_STATE,
 },
+#endif
 #endif
 };
 #endif
