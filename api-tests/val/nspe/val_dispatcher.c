@@ -259,6 +259,55 @@ int32_t val_dispatcher(test_id_t test_id_prev)
 
             if (VAL_GET_COMP_NUM(test_id_prev) != VAL_GET_COMP_NUM(test_id))
             {
+#if 1 //NXP Print results per testsuite */
+                if(test_id_prev != VAL_INVALID_TEST_ID)
+                {
+                    /* Print results */
+                    status = val_nvmem_read(VAL_NVMEM_OFFSET(NV_TEST_CNT), &test_count, sizeof(test_count_t));
+                    if (VAL_ERROR(status))
+                    {
+                        val_print(PRINT_ERROR, "\n\tNVMEM read error", 0);
+                        return status;
+                    }
+
+                    val_print(PRINT_ALWAYS, "\n************ ", 0);
+                    val_print(PRINT_ALWAYS, val_get_comp_name(test_id_prev), 0);
+                    val_print(PRINT_ALWAYS, " Report **********\n", 0);
+                    val_print(PRINT_ALWAYS, "TOTAL TESTS     : %d\n", test_count.pass_cnt + test_count.fail_cnt
+                            + test_count.skip_cnt + test_count.sim_error_cnt);
+                    val_print(PRINT_ALWAYS, "TOTAL PASSED    : %d\n", test_count.pass_cnt);
+                    val_print(PRINT_ALWAYS, "TOTAL SIM ERROR : %d\n", test_count.sim_error_cnt);
+                    val_print(PRINT_ALWAYS, "TOTAL FAILED    : %d\n", test_count.fail_cnt);
+                    val_print(PRINT_ALWAYS, "TOTAL SKIPPED   : %d\n", test_count.skip_cnt);
+                    val_print(PRINT_ALWAYS, "******************************************\n", 0);
+                    
+                    /* Reset counters */
+                    test_id_t       test_id = VAL_INVALID_TEST_ID;
+                    test_count_t    test_count;
+                    
+                    status = val_nvmem_write(VAL_NVMEM_OFFSET(NV_TEST_ID_PREVIOUS),
+                                            &test_id, sizeof(test_id_t));
+                    if (VAL_ERROR(status))
+                    {
+                         val_print(PRINT_ALWAYS, "\n\tNVMEM write error", 0);
+                         return status;
+                    }
+
+                    test_count.pass_cnt = 0;
+                    test_count.fail_cnt = 0;
+                    test_count.skip_cnt = 0;
+                    test_count.sim_error_cnt = 0;
+
+                    status = val_nvmem_write(VAL_NVMEM_OFFSET(NV_TEST_CNT),
+                                             &test_count, sizeof(test_count_t));
+                    if (VAL_ERROR(status))
+                    {
+                         val_print(PRINT_ERROR, "\n\tNVMEM write error", 0);
+                         return status;
+                    }
+                 }
+#endif
+
                 val_print(PRINT_ALWAYS, "\nRunning.. ", 0);
                 val_print(PRINT_ALWAYS, val_get_comp_name(test_id), 0);
 			//	val_print_api_version();
