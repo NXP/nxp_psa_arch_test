@@ -1,5 +1,6 @@
+# MCUXpresso SDK : mcuxsdk-middleware-Platform-Security-Architecture-Test-Suite
 
-# Arm Platform Security Architecture : Test Suite
+This repository is a fork of ARM Platform Security Architecture Test suits( https://github.com/ARM-software/psa-arch-tests)(SHA: 8d8630fdeb2). Modifications have been made to adapt to NXP MCUXpresso SDK. It is part of the MCUXpresso SDK overall delivery which is composed of several sub-repositories/projects. Navigate to the top/parent repository [mcuxsdk-manifests]( https://github.com/nxp-mcuxpresso/mcuxsdk-manifests) for the complete delivery of MCUXpresso SDK.
 
 
 ## Introduction
