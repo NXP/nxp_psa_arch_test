@@ -2,20 +2,20 @@
   "SPDXID": "SPDXRef-DOCUMENT",
   "spdxVersion": "SPDX-2.3",
   "creationInfo": {
-    "created": "2025-05-28T06:05:30Z",
+    "created": "2025-08-04T04:53:27Z",
     "creators": [
       "Organization: NXP"
     ],
     "licenseListVersion": "3.20"
   },
-  "name": "nxp_psa_arch_test-v25.06.00",
+  "name": "nxp_psa_arch_test-v25.09.00-pvw2",
   "dataLicense": "CC0-1.0",
-  "documentNamespace": "https://nxp.com/spdx/362663ed-3737-4566-9ad2-3db7139e9325",
+  "documentNamespace": "https://nxp.com/spdx/251d1b2c-5c68-4b4a-9c54-ed554245f1d5",
   "packages": [
     {
-      "SPDXID": "SPDXRef-package-362663ed-3737-4566-9ad2-3db7139e9325",
+      "SPDXID": "SPDXRef-package-251d1b2c-5c68-4b4a-9c54-ed554245f1d5",
       "name": "nxp_psa_arch_test",
-      "versionInfo": "v25.06.00",
+      "versionInfo": "v25.09.00-pvw2",
       "licenseConcluded": "(Apache-2.0)",
       "licenseDeclared": "(Apache-2.0)",
       "downloadLocation": "https://github.com/NXP/nxp_psa_arch_test",
@@ -32,20 +32,25 @@
       "licenseDeclared": "Apache-2.0",
       "downloadLocation": "https://github.com/zephyrproject-rtos/psa-arch-tests",
       "originator": "Organization: NXP",
+      "supplier": "NOASSERTION",
       "externalRefs": [],
-      "filesAnalyzed": false,
-      "supplier": "NOASSERTION"
+      "filesAnalyzed": false
     }
   ],
   "relationships": [
     {
       "spdxElementId": "SPDXRef-DOCUMENT",
       "relationshipType": "DESCRIBES",
-      "relatedSpdxElement": "SPDXRef-package-362663ed-3737-4566-9ad2-3db7139e9325"
+      "relatedSpdxElement": "SPDXRef-package-251d1b2c-5c68-4b4a-9c54-ed554245f1d5"
     },
     {
-      "spdxElementId": "SPDXRef-package-362663ed-3737-4566-9ad2-3db7139e9325",
+      "spdxElementId": "SPDXRef-package-251d1b2c-5c68-4b4a-9c54-ed554245f1d5",
       "relationshipType": "DYNAMIC_LINK",
+      "relatedSpdxElement": "SPDXRef-package-0b5e378e-b616-4923-b8bb-30426227538e"
+    },
+    {
+      "spdxElementId": "SPDXRef-package-251d1b2c-5c68-4b4a-9c54-ed554245f1d5",
+      "relationshipType": "CONTAINS",
       "relatedSpdxElement": "SPDXRef-package-0b5e378e-b616-4923-b8bb-30426227538e"
     }
   ]
