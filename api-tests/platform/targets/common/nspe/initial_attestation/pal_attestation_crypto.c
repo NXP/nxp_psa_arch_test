@@ -208,6 +208,13 @@ static int32_t pal_attest_get_public_key(uint8_t          *public_key_buff,
     memcpy(public_key_buff, (void *)&attest_public_key, *public_key_len);
     status = PSA_SUCCESS;
 #else
+    /* This used to be a TFM interface function until TF-M 1.4. Now the least invasive way 
+     * we could come up with is to make it possible for a platform to re-define it based on 
+     * different means (typically exporting the public part of the builtin IAK). To avoid 
+     * implicit declaration warnings, add it's declaration here. */
+    extern int32_t tfm_initial_attest_get_public_key(
+        uint8_t * public_key_buff, size_t public_key_buf_size,
+        size_t * public_key_len, psa_ecc_family_t * elliptic_family_type);
     status = tfm_initial_attest_get_public_key(public_key_buff,
                                                public_key_buf_size,
                                                public_key_len,
