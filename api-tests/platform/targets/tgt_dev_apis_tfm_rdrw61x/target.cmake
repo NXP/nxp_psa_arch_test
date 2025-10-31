@@ -31,6 +31,19 @@ list(APPEND PAL_SRC_C_DRIVER_SP )
 # PAL ASM source files part of SPE library - driver partition
 list(APPEND PAL_SRC_ASM_DRIVER_SP )
 
+# Now this is a major hack, but there is no way to get a 
+# platform specific header file (this platform overrides 
+# tfm_builtin_key_ids.h) included here. Even if the header 
+# file is part of TF-M's install interface, this is still 
+# not an option as the test suite typically is part of the 
+# TF-M build itself which means the install has not yet 
+# happened and the interface files are only at their source 
+# location but not at the install location.
+# So we need that platform specific include path here which 
+# depends on the file structure in TF-M (which probalby is 
+# reasonably stable at this point)...
+list(APPEND PSA_INCLUDE_PATHS ${CMAKE_SOURCE_DIR}/platform/ext/target/nxp/rdrw61x/Device/Include/)
+
 # Listing all the sources required for given target
 if(${SUITE} STREQUAL "IPC")
 	list(APPEND PAL_SRC_C_NSPE
@@ -74,6 +87,7 @@ if(${SUITE} STREQUAL "INITIAL_ATTESTATION")
 	list(APPEND PAL_SRC_C_NSPE
 		${PSA_ROOT_DIR}/platform/targets/common/nspe/initial_attestation/pal_attestation_intf.c
 		${PSA_ROOT_DIR}/platform/targets/common/nspe/initial_attestation/pal_attestation_crypto.c
+		${PSA_ROOT_DIR}/platform/targets/${TARGET}/nspe/plat_iak_pk.c
         ${PSA_TARGET_QCBOR}/src/UsefulBuf.c
         ${PSA_TARGET_QCBOR}/src/ieee754.c
         ${PSA_TARGET_QCBOR}/src/qcbor_decode.c
