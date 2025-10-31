@@ -1,5 +1,5 @@
 /** @file
- * Copyright (c) 2019-2023, Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2019-2024, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@
 #include "pal_common.h"
 #include "pal_uart.h"
 #include "pal_nvmem.h"
-#include "pal_wd_syswdog.h"
+#include "pal_wd_rpi.h"
 
 /**
     @brief    - This function initializes the UART
@@ -27,7 +27,7 @@
 **/
 int pal_uart_init_ns(uint32_t uart_base_addr)
 {
-    pal_uart_cmsdk_init(uart_base_addr);
+    pal_uart_pl011_init(uart_base_addr);
     return PAL_STATUS_SUCCESS;
 }
 
@@ -40,7 +40,7 @@ int pal_uart_init_ns(uint32_t uart_base_addr)
 
 int pal_print_ns(const char *str, int32_t data)
 {
-    pal_cmsdk_print(str, data);
+    pal_uart_pl011_print(str, data);
     return PAL_STATUS_SUCCESS;
 }
 
@@ -53,7 +53,7 @@ int pal_print_ns(const char *str, int32_t data)
 **/
 int pal_wd_timer_init_ns(addr_t base_addr, uint32_t time_us, uint32_t timer_tick_us)
 {
-    return(pal_wd_syswdog_init(base_addr,time_us, timer_tick_us));
+    return(pal_wd_rpi_init(base_addr,time_us, timer_tick_us));
 }
 
 /**
@@ -63,7 +63,7 @@ int pal_wd_timer_init_ns(addr_t base_addr, uint32_t time_us, uint32_t timer_tick
 **/
 int pal_wd_timer_enable_ns(addr_t base_addr)
 {
-    return(pal_wd_syswdog_enable(base_addr));
+    return(pal_wd_rpi_enable(base_addr));
 }
 
 /**
@@ -73,7 +73,7 @@ int pal_wd_timer_enable_ns(addr_t base_addr)
 **/
 int pal_wd_timer_disable_ns(addr_t base_addr)
 {
-    return (pal_wd_syswdog_disable(base_addr));
+    return (pal_wd_rpi_disable(base_addr));
 }
 
 /**
@@ -139,6 +139,5 @@ void pal_terminate_simulation(void)
 **/
 int pal_system_reset(void)
 {
-    /* Reset functionality is not functional on AN521 FVP */
     return PAL_STATUS_UNSUPPORTED_FUNC;
 }
