@@ -1,0 +1,57 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.3",
+  "creationInfo": {
+    "created": "2025-08-04T04:53:27Z",
+    "creators": [
+      "Organization: NXP"
+    ],
+    "licenseListVersion": "3.20"
+  },
+  "name": "nxp_psa_arch_test-v25.09.00-pvw2",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://nxp.com/spdx/251d1b2c-5c68-4b4a-9c54-ed554245f1d5",
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-package-251d1b2c-5c68-4b4a-9c54-ed554245f1d5",
+      "name": "nxp_psa_arch_test",
+      "versionInfo": "v25.09.00-pvw2",
+      "licenseConcluded": "(Apache-2.0)",
+      "licenseDeclared": "(Apache-2.0)",
+      "downloadLocation": "https://github.com/NXP/nxp_psa_arch_test",
+      "originator": "Organization: NXP",
+      "supplier": "NOASSERTION",
+      "externalRefs": [],
+      "filesAnalyzed": false
+    },
+    {
+      "SPDXID": "SPDXRef-package-0b5e378e-b616-4923-b8bb-30426227538e",
+      "name": "ARM-software/psa-arch-tests",
+      "versionInfo": "v22.01_API1.4_ADAC_BETA",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "downloadLocation": "https://github.com/zephyrproject-rtos/psa-arch-tests",
+      "originator": "Organization: NXP",
+      "supplier": "NOASSERTION",
+      "externalRefs": [],
+      "filesAnalyzed": false
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-package-251d1b2c-5c68-4b4a-9c54-ed554245f1d5"
+    },
+    {
+      "spdxElementId": "SPDXRef-package-251d1b2c-5c68-4b4a-9c54-ed554245f1d5",
+      "relationshipType": "DYNAMIC_LINK",
+      "relatedSpdxElement": "SPDXRef-package-0b5e378e-b616-4923-b8bb-30426227538e"
+    },
+    {
+      "spdxElementId": "SPDXRef-package-251d1b2c-5c68-4b4a-9c54-ed554245f1d5",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-package-0b5e378e-b616-4923-b8bb-30426227538e"
+    }
+  ]
+}
