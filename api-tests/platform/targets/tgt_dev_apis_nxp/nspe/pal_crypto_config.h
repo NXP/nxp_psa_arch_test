@@ -61,7 +61,11 @@
 #ifndef TF_M_PROFILE_MEDIUM
 #define ARCH_TEST_ECC_CURVE_SECP224R1
 #endif
+
+#ifndef TF_M_DISABLE_CRYPTO_CIPHER_MODULE_TESTS
 #define ARCH_TEST_ECC_CURVE_SECP256R1
+#endif
+
 #ifndef TF_M_PROFILE_MEDIUM
 #define ARCH_TEST_ECC_CURVE_SECP384R1
 #endif
@@ -113,8 +117,9 @@
  * Enable the generic cipher layer.
  */
 
+#ifndef TF_M_DISABLE_CRYPTO_CIPHER_MODULE_TESTS
 #define ARCH_TEST_CIPHER
-
+#endif
 /**
  * \def ARCH_TEST_ARC4
  *
