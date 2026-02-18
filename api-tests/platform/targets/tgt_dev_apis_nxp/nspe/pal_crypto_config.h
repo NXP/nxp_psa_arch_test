@@ -324,7 +324,11 @@
  *
  * Requires: ARCH_TEST_HASH
 */
+#ifndef TF_M_PROFILE_SMALL
+#ifndef TF_M_PROFILE_MEDIUM
 #define ARCH_TEST_TLS12_PRF
+#endif
+#endif
 
 /**
  * \def ARCH_TEST_xMAC
@@ -404,7 +408,9 @@
  *
  * Enable deterministic ECDSA (RFC 6979).
 */
+#ifndef TF_M_DISABLE_CRYPTO_CIPHER_MODULE_TESTS
 #define ARCH_TEST_DETERMINISTIC_ECDSA
+#endif
 
 /**
  * \def ARCH_TEST_ECC_ASYMMETRIC_API_SUPPORT
