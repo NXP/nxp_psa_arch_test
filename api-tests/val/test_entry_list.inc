@@ -1,4 +1,6 @@
 #ifdef CRYPTO
+/* -------- Crypto Part 1 (default for REDUCED mode) -------- */
+#if !defined(REDUCED_PSA_TESTS) && (!defined(ENABLE_CRYPTO_PART2) && !defined(ENABLE_CRYPTO_PART3) && !defined(ENABLE_STORAGE_TESTS))
     {201, &test_entry_c001},
     {202, &test_entry_c002},
     {203, &test_entry_c003},
@@ -22,6 +24,9 @@
     {221, &test_entry_c021},
     {222, &test_entry_c022},
     {223, &test_entry_c023},
+#endif
+/* -------- Crypto Part 2 (opt-in for REDUCED mode) -------- */
+#if !defined(REDUCED_PSA_TESTS) || defined(ENABLE_CRYPTO_PART2)
     {224, &test_entry_c024},
     {225, &test_entry_c025},
     {226, &test_entry_c026},
@@ -54,6 +59,9 @@
     {248, &test_entry_c048},
     {249, &test_entry_c049},
     {250, &test_entry_c050},
+#endif
+/* -------- Crypto Part 3 (opt-in for REDUCED mode) -------- */
+#if !defined(REDUCED_PSA_TESTS) || defined(ENABLE_CRYPTO_PART3)
     {251, &test_entry_c051},
     {252, &test_entry_c052},
     {253, &test_entry_c053},
@@ -65,11 +73,16 @@
     {259, &test_entry_c059},
     {260, &test_entry_c060},
     {261, &test_entry_c061},
+#endif /* REDUCED_PSA_TESTS */
 #endif
 #ifdef INITIAL_ATTESTATION
     {601, &test_entry_a001},
 #endif
 #if defined(INTERNAL_TRUSTED_STORAGE) || defined(PROTECTED_STORAGE)
+
+/* Reduced mode excludes by default */
+#if !defined(REDUCED_PSA_TESTS) || defined(ENABLE_STORAGE_TESTS)
+
     {401, &test_entry_s001},
     {402, &test_entry_s002},
     {403, &test_entry_s003},
@@ -89,4 +102,5 @@
     {415, &test_entry_s015},
     {416, &test_entry_s016},
     {417, &test_entry_s017},
+#endif /* REDUCED_PSA_TESTS */
 #endif
